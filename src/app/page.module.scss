@@ -1,0 +1,33 @@
+.projectGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 1280px) {
+    .projectGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projectGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.toolGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .toolGrid {
+        grid-template-columns: 1fr;
+    }
+}
