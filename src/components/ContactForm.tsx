@@ -100,7 +100,7 @@ export const ContactForm: React.FC = () => {
             gap="l"
             s={{ direction: "column", gap: "l" }}
           >
-            <Column flex={1} fillWidth horizontal="left" align="left">
+            <Column flex={1} fillWidth horizontal="start" align="start">
               <label htmlFor="name" style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}>
                 <Text variant="body-default-s">Name</Text>
               </label>
@@ -115,7 +115,7 @@ export const ContactForm: React.FC = () => {
                 style={inputStyle}
               />
             </Column>
-            <Column flex={1} fillWidth horizontal="left" align="left">
+            <Column flex={1} fillWidth horizontal="start" align="start">
               <label htmlFor="email" style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}>
                 <Text variant="body-default-s">Email</Text>
               </label>
@@ -133,7 +133,7 @@ export const ContactForm: React.FC = () => {
           </Row>
 
           {/* Phone Number - Full width */}
-          <Column fillWidth horizontal="left" align="left">
+          <Column fillWidth horizontal="start" align="start">
             <label htmlFor="phone" style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}>
               <Text variant="body-default-s">Phone Number</Text>
             </label>
@@ -149,7 +149,7 @@ export const ContactForm: React.FC = () => {
           </Column>
 
           {/* Message - Full width */}
-          <Column fillWidth horizontal="left" align="left">
+          <Column fillWidth horizontal="start" align="start">
             <label htmlFor="message" style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}>
               <Text variant="body-default-s">Message</Text>
             </label>
