@@ -9,21 +9,21 @@ const projects = [
   {
     id: 1,
     title: "Orgatus",
-    description: "Custom WordPress website",
+    description: "A brand website rooted in Moroccan tradition, presenting natural cosmetics inspired by local craftsmanship.",
     image: "/images/projects/orgatus.jpg",
     visitUrl: "https://orgatus.com/",
   },
   {
     id: 2,
     title: "WoodenLife",
-    description: "WordPress e-commerce store",
+    description: "An online store for handcrafted wooden pieces made for everyday use, blending utility with design.",
     image: "/images/projects/woodenlife.jpg",
     visitUrl: "https://woodenlife.store/en/",
   },
   {
     id: 3,
     title: "Global Management Institute",
-    description: "WordPress website",
+    description: "An academic platform offering business programs from BBA to DBA for professionals and future leaders.",
     image: "/images/projects/gmi.jpg",
     visitUrl: "https://gmi-institute.com/",
   },
@@ -174,7 +174,7 @@ export default function Home() {
         </Row>
 
         <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance" align="center">
-          I craft beautiful, high-performance WordPress websites that not only look stunning but drive real results. From custom theme development to seamless integrations, I combine technical expertise with a passion for building digital experiences that help your business grow.
+          I build web experiences from front to back, focusing on clean design, solid functionality, and real-world impact.
         </Text>
 
         <Row gap="m" wrap horizontal="center" s={{ direction: "column", fillWidth: true, horizontal: "center" }}>

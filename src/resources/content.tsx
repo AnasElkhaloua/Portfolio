@@ -44,7 +44,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/og/og.jpg",
   label: "Home",
   title: `${person.name} – Web Developer`,
   description: `Portfolio of ${person.name}, a WordPress and PHP web developer based in Marrakesh, Morocco.`,
@@ -104,9 +104,9 @@ const about: About = {
       {
         company: "Freelance",
         timeframe: "Jan 2025 - Present",
-        role: "WordPress Developer",
+        role: "Full Stack Developer",
         achievements: [
-          <>Delivered custom WordPress solutions for clients across e-commerce and corporate sectors.</>,
+          <>Delivered custom web solutions for clients across e-commerce and corporate sectors.</>,
           <>Built responsive websites with high PageSpeed scores and comprehensive SEO optimization.</>,
           <>Developed custom themes and plugins with API integrations for enhanced functionality.</>,
         ],
