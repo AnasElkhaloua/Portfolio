@@ -4,7 +4,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ToolCard } from "@/components/ToolCard";
 import { ContactForm } from "@/components/ContactForm";
 import type { IconType } from "react-icons";
-import { LuCode, LuServer, LuCloudCog, LuWrench, LuMonitor, LuUsers } from "react-icons/lu";
+import { LuCode, LuServer, LuCloudCog, LuWrench, LuMonitor, LuUsers, LuBlocks, LuDatabase } from "react-icons/lu";
 import styles from "./page.module.scss";
 
 const projects = [
@@ -50,11 +50,9 @@ const tools: ToolGroup[] = [
     titleIcon: LuCode,
     tools: [
       { name: "JavaScript", icon: "/images/tools/javascript.svg" },
-      { name: "TypeScript", icon: "/images/tools/typescript.svg" },
       { name: "React", icon: "/images/tools/react.svg" },
       { name: "Vue", icon: "/images/tools/vue.svg" },
       { name: "Tailwind CSS", icon: "/images/tools/tailwindcss.svg" },
-      { name: "Bootstrap", icon: "/images/tools/bootstrap.svg" },
     ],
   },
   {
@@ -64,8 +62,6 @@ const tools: ToolGroup[] = [
     tools: [
       { name: "Node.js", icon: "/images/tools/nodejs.svg" },
       { name: "PHP", icon: "/images/tools/php.svg" },
-      { name: "phpMyAdmin", icon: "/images/tools/phpmyadmin.svg" },
-      { name: "MySQL", icon: "/images/tools/mysql.svg" },
     ],
   },
   {
@@ -86,13 +82,30 @@ const tools: ToolGroup[] = [
     tools: [
       { name: "Figma", icon: "/images/tools/figma.svg" },
       { name: "Photoshop", icon: "/images/tools/photoshop.svg" },
-      { name: "WordPress", icon: "/images/tools/wordpress.svg" },
       { name: "VS Code", icon: "/images/tools/vscode.svg" },
       { name: "Postman", icon: "/images/tools/postman.svg" },
     ],
   },
   {
     id: 5,
+    title: "CMS",
+    titleIcon: LuBlocks,
+    tools: [
+      { name: "WordPress", icon: "/images/tools/wordpress.svg" },
+      { name: "Shopify", icon: "/images/tools/shopify.svg" },
+    ],
+  },
+  {
+    id: 6,
+    title: "Database",
+    titleIcon: LuDatabase,
+    tools: [
+      { name: "MySQL", icon: "/images/tools/mysql.svg" },
+      { name: "phpMyAdmin", icon: "/images/tools/phpmyadmin.svg" },
+    ],
+  },
+  {
+    id: 7,
     title: "Operating Systems",
     titleIcon: LuMonitor,
     tools: [
@@ -101,7 +114,7 @@ const tools: ToolGroup[] = [
     ],
   },
   {
-    id: 6,
+    id: 8,
     title: "Soft Skills",
     titleIcon: LuUsers,
     tools: [
