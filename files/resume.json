@@ -1,0 +1,160 @@
+{
+  "personal": {
+    "name": "Anas El Khaloua",
+    "title": "Web Developer",
+    "phone": "+212 624 651 236",
+    "email": "anaselkhaloua06@gmail.com",
+    "address": "Hay El Massira, Chichaoua, Morocco"
+  },
+  "experience": [
+    {
+      "role": "WordPress Developer",
+      "company": "Freelance / Self-Employed",
+      "location": null,
+      "startDate": "2025-01",
+      "endDate": null,
+      "current": true,
+      "responsibilities": [
+        "Delivered custom WordPress solutions for clients across e-commerce and corporate sectors",
+        "Built responsive websites with high PageSpeed scores and comprehensive SEO optimization",
+        "Developed custom themes and plugins with API integrations for enhanced functionality"
+      ]
+    },
+    {
+      "role": "WordPress Developer",
+      "company": "Twily",
+      "location": "Marrakesh, Morocco",
+      "startDate": "2024-06",
+      "endDate": "2025-01",
+      "current": false,
+      "responsibilities": [
+        "Developed responsive WordPress websites from UI designs with seamless cross-device compatibility",
+        "Improved client website SEO rankings through strategic on-page and off-page optimization",
+        "Optimized website performance using PageSpeed Insights and GTmetrix"
+      ]
+    },
+    {
+      "role": "WordPress Developer",
+      "company": "Cvcsupplies Ltd",
+      "location": "Marrakesh, Morocco",
+      "startDate": "2023-09",
+      "endDate": "2024-05",
+      "current": false,
+      "responsibilities": [
+        "Development and maintenance of WordPress websites, ensuring high quality and optimal functionality",
+        "Implementation of both on-page and off-page SEO strategies to improve performance and increase rankings",
+        "Analysis and outreach for backlinks to build a strong profile",
+        "Used performance tools such as PageSpeed Insights to optimize loading speed",
+        "Customization of themes and integration of APIs to extend functionalities and meet client needs"
+      ]
+    },
+    {
+      "role": "Junior PHP Web Developer",
+      "company": "Hello World Agency",
+      "location": "Marrakesh, Morocco",
+      "startDate": "2022-06",
+      "endDate": "2022-09",
+      "current": false,
+      "responsibilities": [
+        "Designing and developing user interfaces with HTML, CSS, Bootstrap, and Tailwind",
+        "Ensuring cross-browser compatibility and responsiveness for optimal user experience",
+        "Creating dynamic server-side web applications using PHP",
+        "Managing databases, designing schemas, writing SQL queries, and optimizing performance",
+        "Seamlessly integrating front-end and back-end features for comprehensive web applications",
+        "Collaborating with the team to ensure smooth integration of all components"
+      ]
+    },
+    {
+      "role": "IT Support Technician (Intern)",
+      "company": "Provincial National Education Directorate",
+      "location": "Chichaoua, Morocco",
+      "startDate": "2019-07",
+      "endDate": "2019-08",
+      "current": false,
+      "responsibilities": [
+        "Designed and developed a training management application for teachers using Microsoft Access",
+        "Customized application features based on client-specific needs",
+        "Worked closely with end users to understand their requirements",
+        "Provided technical support by resolving hardware and software issues",
+        "Diagnosed and resolved IT incidents ensuring business continuity",
+        "Installed, configured, and maintained IT equipment such as computers, printers, and routers"
+      ]
+    },
+    {
+      "role": "IT Technician (Intern)",
+      "company": "Sid L'mokhtar Municipality",
+      "location": "Sid L'mokhtar, Morocco",
+      "startDate": "2021-01",
+      "endDate": "2021-04",
+      "current": false,
+      "responsibilities": [
+        "Provided technical support to internal users by resolving hardware and software issues",
+        "Diagnosed and resolved IT incidents effectively, ensuring business continuity",
+        "Installed, configured, and maintained IT equipment",
+        "Ensured all necessary software was correctly installed and functioning"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor's Degree in Network Engineering, Web, and Security",
+      "institution": "Cadi Ayyad University Semlalia",
+      "location": "Marrakech, Morocco",
+      "startYear": 2022,
+      "endYear": 2023,
+      "highlights": [
+        "Java/JEE programming",
+        "PHP programming",
+        "UML and databases",
+        "Mobile and wireless networks",
+        "Information Systems Security Management",
+        "Network administration and security",
+        "Mobile application programming"
+      ]
+    },
+    {
+      "degree": "Associate Degree in Multimedia and Web Design (MCW)",
+      "institution": "Technical High School",
+      "location": "Chichaoua, Morocco",
+      "startYear": 2018,
+      "endYear": 2020,
+      "highlights": [
+        "HTML, CSS, JavaScript",
+        "Graphic design: Adobe Photoshop, Illustrator, InDesign, Audition, Premiere Pro",
+        "Multimedia integration into web environments",
+        "UI/UX mockup creation",
+        "PHP and MySQL basics",
+        "Object-oriented programming with Java"
+      ]
+    },
+    {
+      "degree": "Baccalaureate in Electrical Sciences and Technologies",
+      "institution": "Technical High School",
+      "location": "Chichaoua, Morocco",
+      "startYear": null,
+      "endYear": 2018,
+      "highlights": []
+    }
+  ],
+  "skills": {
+    "frontend": ["HTML", "CSS", "JavaScript", "Ajax", "jQuery", "Tailwind CSS", "Bootstrap"],
+    "backend": ["PHP"],
+    "cms": ["WordPress", "Shopify"],
+    "databases": ["SQL", "MySQL"],
+    "seo": ["On-Page SEO", "Off-Page SEO"],
+    "design": ["Figma", "Adobe Photoshop"],
+    "devops": ["Git", "GitHub"]
+  },
+  "languages": [
+    { "language": "Arabic", "level": "Fluent" },
+    { "language": "English", "level": "Advanced" },
+    { "language": "French", "level": "Basic" }
+  ],
+  "projects": [
+    { "name": "Orgatus" },
+    { "name": "WoodenLife" },
+    { "name": "Xorapilates" },
+    { "name": "EPM" },
+    { "name": "Global Management Institute" }
+  ]
+}

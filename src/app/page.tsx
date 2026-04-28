@@ -3,6 +3,8 @@ import { home, about, person, work, baseURL } from "@/resources";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ToolCard } from "@/components/ToolCard";
 import { ContactForm } from "@/components/ContactForm";
+import type { IconType } from "react-icons";
+import { LuCode, LuDatabase, LuLayers, LuPalette } from "react-icons/lu";
 import styles from "./page.module.scss";
 
 const projects = [
@@ -29,108 +31,63 @@ const projects = [
   },
 ];
 
-const tools = [
-  // FRONTEND
+interface ToolItem {
+  name: string;
+  icon: string;
+}
+
+interface ToolGroup {
+  id: number;
+  title: string;
+  titleIcon: IconType;
+  tools: ToolItem[];
+}
+
+const tools: ToolGroup[] = [
   {
     id: 1,
-    name: "HTML",
-    category: "Markup",
-    icon: "/images/tools/html.svg",
+    title: "Programming Languages",
+    titleIcon: LuCode,
+    tools: [
+      { name: "JavaScript", icon: "/images/tools/javascript.svg" },
+      { name: "PHP", icon: "/images/tools/php.svg" },
+      { name: "HTML", icon: "/images/tools/html.svg" },
+      { name: "CSS", icon: "/images/tools/css.svg" },
+    ],
   },
   {
     id: 2,
-    name: "CSS",
-    category: "Styling",
-    icon: "/images/tools/css.svg",
+    title: "Frameworks and Libraries",
+    titleIcon: LuLayers,
+    tools: [
+      { name: "jQuery", icon: "/images/tools/jquery.svg" },
+      { name: "Tailwind CSS", icon: "/images/tools/tailwindcss.svg" },
+      { name: "Bootstrap", icon: "/images/tools/bootstrap.svg" },
+      { name: "WordPress", icon: "/images/tools/wordpress.svg" },
+    ],
   },
   {
     id: 3,
-    name: "JavaScript",
-    category: "Scripting",
-    icon: "/images/tools/javascript.svg",
+    title: "Data and Platforms",
+    titleIcon: LuDatabase,
+    tools: [
+      { name: "MySQL", icon: "/images/tools/mysql.svg" },
+      { name: "Shopify", icon: "/images/tools/shopify.svg" },
+      { name: "WordPress", icon: "/images/tools/wordpress.svg" },
+      { name: "Google PSI", icon: "/images/tools/google.svg" },
+    ],
   },
   {
     id: 4,
-    name: "jQuery",
-    category: "JS Library",
-    icon: "/images/tools/jquery.svg",
-  },
-  {
-    id: 5,
-    name: "Tailwind CSS",
-    category: "Frontend Framework",
-    icon: "/images/tools/tailwindcss.svg",
-  },
-  {
-    id: 6,
-    name: "Bootstrap",
-    category: "Frontend Framework",
-    icon: "/images/tools/bootstrap.svg",
-  },
-  // BACKEND
-  {
-    id: 7,
-    name: "PHP",
-    category: "Backend",
-    icon: "/images/tools/php.svg",
-  },
-  {
-    id: 8,
-    name: "MySQL",
-    category: "Database",
-    icon: "/images/tools/mysql.svg",
-  },
-  // CMS
-  {
-    id: 9,
-    name: "WordPress",
-    category: "CMS",
-    icon: "/images/tools/wordpress.svg",
-  },
-  {
-    id: 10,
-    name: "Shopify",
-    category: "CMS",
-    icon: "/images/tools/shopify.svg",
-  },
-  // DESIGN
-  {
-    id: 11,
-    name: "Figma",
-    category: "Design Tool",
-    icon: "/images/tools/figma.svg",
-  },
-  {
-    id: 12,
-    name: "Adobe Photoshop",
-    category: "Graphic Design",
-    icon: "/images/tools/photoshop.svg",
-  },
-  {
-    id: 13,
-    name: "Adobe Illustrator",
-    category: "Graphic Design",
-    icon: "/images/tools/illustrator.svg",
-  },
-  // SEO
-  {
-    id: 14,
-    name: "Google PageSpeed Insights",
-    category: "Performance",
-    icon: "/images/tools/google.svg",
-  },
-  // DEVOPS / TOOLS
-  {
-    id: 16,
-    name: "GitHub",
-    category: "Version Control",
-    icon: "/images/tools/github.svg",
-  },
-  {
-    id: 17,
-    name: "VS Code",
-    category: "Code Editor",
-    icon: "/images/tools/vscode.svg",
+    title: "Design and Workflow",
+    titleIcon: LuPalette,
+    tools: [
+      { name: "Figma", icon: "/images/tools/figma.svg" },
+      { name: "Photoshop", icon: "/images/tools/photoshop.svg" },
+      { name: "Illustrator", icon: "/images/tools/illustrator.svg" },
+      { name: "GitHub", icon: "/images/tools/github.svg" },
+      { name: "VS Code", icon: "/images/tools/vscode.svg" },
+    ],
   },
 ];
 
@@ -216,9 +173,9 @@ export default function Home() {
           {tools.map((tool) => (
             <ToolCard
               key={tool.id}
-              name={tool.name}
-              category={tool.category}
-              icon={tool.icon}
+              title={tool.title}
+              titleIcon={tool.titleIcon}
+              tools={tool.tools}
             />
           ))}
         </div>

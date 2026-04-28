@@ -1,59 +1,46 @@
-"use client";
-
-import { Row, Heading, Text } from "@once-ui-system/core";
 import Image from "next/image";
+import type { IconType } from "react-icons";
 import styles from "./ToolCard.module.scss";
 
-interface ToolCardProps {
+interface ToolItem {
   icon: string;
   name: string;
-  category: string;
+}
+
+interface ToolCardProps {
+  title: string;
+  titleIcon: IconType;
+  tools: ToolItem[];
 }
 
 export const ToolCard: React.FC<ToolCardProps> = ({
-  icon,
-  name,
-  category,
+  title,
+  titleIcon: TitleIcon,
+  tools,
 }) => {
-  let iconClass = styles.icon;
-  if (icon.includes('github')) {
-    iconClass += ` ${styles.githubIcon}`;
-  } else if (icon.includes('google')) {
-    iconClass += ` ${styles.googleIcon}`;
-  }
-  
   return (
-    <Row 
-      className={styles.card}
-      fillWidth
-      gap="m"
-      paddingX="m"
-      paddingY="m"
-      radius="m"
-      border="neutral-medium"
-      vertical="center"
-    >
-      <div className={styles.iconWrapper}>
-        <Image
-          src={icon}
-          alt={name}
-          width={48}
-          height={48}
-          className={iconClass}
-        />
+    <article className={styles.card}>
+      <header className={styles.header}>
+        <div className={styles.titleIconBox}>
+          <TitleIcon className={styles.titleIcon} aria-hidden="true" />
+        </div>
+        <h3 className={styles.title}>{title}</h3>
+      </header>
+
+      <div className={styles.toolsGrid}>
+        {tools.map((tool) => (
+          <div key={tool.name} className={styles.toolPill}>
+            <Image
+              src={tool.icon}
+              alt={tool.name}
+              width={20}
+              height={20}
+              className={styles.toolIcon}
+            />
+            <span className={styles.toolName}>{tool.name}</span>
+          </div>
+        ))}
       </div>
-      
-      <div className={styles.content}>
-        <Heading variant="heading-strong-s" as="h3">
-          {name}
-        </Heading>
-        <Text 
-          variant="body-default-xs" 
-          onBackground="neutral-weak"
-        >
-          {category}
-        </Text>
-      </div>
-    </Row>
+    </article>
   );
 };

@@ -12,17 +12,25 @@ export async function POST(request: Request) {
       );
     }
 
-    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'anaselkhaloua06@gmail.com';
+    const contactEmail = process.env.CONTACT_EMAIL || process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'anaselkhaloua06@gmail.com';
+    const resendApiKey = process.env.RESEND_API_KEY;
+
+    if (!resendApiKey) {
+      return NextResponse.json(
+        { error: 'Server is missing RESEND_API_KEY environment variable.' },
+        { status: 500 }
+      );
+    }
 
     // Send email using Resend
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Authorization': `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: 'onboarding@resend.dev', // For testing. Add your verified domain for production
+        from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
         to: contactEmail,
         replyTo: email,
         subject: `New Contact Form Submission from ${name}`,
@@ -38,12 +46,12 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      // Fallback to mailto if Resend is not configured
-      console.warn('Resend API not configured, using fallback');
-      return NextResponse.json({
-        success: true,
-        message: 'Form submitted. Please ensure RESEND_API_KEY is set for email delivery.',
-      });
+      const resendError = await response.text();
+      console.error('Resend API error:', resendError);
+      return NextResponse.json(
+        { error: 'Email provider rejected the request. Check RESEND_API_KEY and sender domain.', details: resendError },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json(

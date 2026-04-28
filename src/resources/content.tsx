@@ -47,7 +47,7 @@ const home: Home = {
   image: "/images/og/og.jpg",
   label: "Home",
   title: `${person.name} – Web Developer`,
-  description: `Portfolio of ${person.name}, a WordPress and PHP web developer based in Marrakesh, Morocco.`,
+  description: `Portfolio of ${person.name}, a Full Stack web developer based in Marrakesh, Morocco.`,
   headline: <>Building fast, clean websites that actually rank.</>,
   featured: {
     display: false,
