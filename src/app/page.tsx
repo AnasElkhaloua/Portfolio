@@ -4,7 +4,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ToolCard } from "@/components/ToolCard";
 import { ContactForm } from "@/components/ContactForm";
 import type { IconType } from "react-icons";
-import { LuCode, LuDatabase, LuLayers, LuPalette } from "react-icons/lu";
+import { LuCode, LuServer, LuCloudCog, LuWrench, LuMonitor, LuUsers } from "react-icons/lu";
 import styles from "./page.module.scss";
 
 const projects = [
@@ -46,47 +46,68 @@ interface ToolGroup {
 const tools: ToolGroup[] = [
   {
     id: 1,
-    title: "Programming Languages",
+    title: "Frontend",
     titleIcon: LuCode,
     tools: [
       { name: "JavaScript", icon: "/images/tools/javascript.svg" },
-      { name: "PHP", icon: "/images/tools/php.svg" },
-      { name: "HTML", icon: "/images/tools/html.svg" },
-      { name: "CSS", icon: "/images/tools/css.svg" },
+      { name: "TypeScript", icon: "/images/tools/typescript.svg" },
+      { name: "React", icon: "/images/tools/react.svg" },
+      { name: "Vue", icon: "/images/tools/vue.svg" },
+      { name: "Tailwind CSS", icon: "/images/tools/tailwindcss.svg" },
+      { name: "Bootstrap", icon: "/images/tools/bootstrap.svg" },
     ],
   },
   {
     id: 2,
-    title: "Frameworks and Libraries",
-    titleIcon: LuLayers,
+    title: "Backend",
+    titleIcon: LuServer,
     tools: [
-      { name: "jQuery", icon: "/images/tools/jquery.svg" },
-      { name: "Tailwind CSS", icon: "/images/tools/tailwindcss.svg" },
-      { name: "Bootstrap", icon: "/images/tools/bootstrap.svg" },
-      { name: "WordPress", icon: "/images/tools/wordpress.svg" },
+      { name: "Node.js", icon: "/images/tools/nodejs.svg" },
+      { name: "PHP", icon: "/images/tools/php.svg" },
+      { name: "phpMyAdmin", icon: "/images/tools/phpmyadmin.svg" },
+      { name: "MySQL", icon: "/images/tools/mysql.svg" },
     ],
   },
   {
     id: 3,
-    title: "Data and Platforms",
-    titleIcon: LuDatabase,
+    title: "DevOps & Cloud",
+    titleIcon: LuCloudCog,
     tools: [
-      { name: "MySQL", icon: "/images/tools/mysql.svg" },
-      { name: "Shopify", icon: "/images/tools/shopify.svg" },
-      { name: "WordPress", icon: "/images/tools/wordpress.svg" },
-      { name: "Google PSI", icon: "/images/tools/google.svg" },
+      { name: "Git", icon: "/images/tools/git.svg" },
+      { name: "GitHub", icon: "/images/tools/github.svg" },
+      { name: "Vercel", icon: "/images/tools/vercel.svg" },
+      { name: "Cloudflare", icon: "/images/tools/cloudflare.svg" },
     ],
   },
   {
     id: 4,
-    title: "Design and Workflow",
-    titleIcon: LuPalette,
+    title: "Design & Tools",
+    titleIcon: LuWrench,
     tools: [
       { name: "Figma", icon: "/images/tools/figma.svg" },
       { name: "Photoshop", icon: "/images/tools/photoshop.svg" },
-      { name: "Illustrator", icon: "/images/tools/illustrator.svg" },
-      { name: "GitHub", icon: "/images/tools/github.svg" },
+      { name: "WordPress", icon: "/images/tools/wordpress.svg" },
       { name: "VS Code", icon: "/images/tools/vscode.svg" },
+      { name: "Postman", icon: "/images/tools/postman.svg" },
+    ],
+  },
+  {
+    id: 5,
+    title: "Operating Systems",
+    titleIcon: LuMonitor,
+    tools: [
+      { name: "Windows", icon: "/images/tools/windows.svg" },
+      { name: "Ubuntu", icon: "/images/tools/ubuntu.svg" },
+    ],
+  },
+  {
+    id: 6,
+    title: "Soft Skills",
+    titleIcon: LuUsers,
+    tools: [
+      { name: "Teamwork", icon: "/images/tools/teamwork.svg" },
+      { name: "Communication", icon: "/images/tools/communication.svg" },
+      { name: "Debugging", icon: "/images/tools/debugging.svg" },
     ],
   },
 ];

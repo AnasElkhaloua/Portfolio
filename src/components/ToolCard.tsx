@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { IconType } from "react-icons";
+import { Column } from "@once-ui-system/core";
 import styles from "./ToolCard.module.scss";
+import projectCardStyles from "./ProjectCard.module.scss";
 
 interface ToolItem {
   icon: string;
@@ -19,7 +21,15 @@ export const ToolCard: React.FC<ToolCardProps> = ({
   tools,
 }) => {
   return (
-    <article className={styles.card}>
+    <Column
+      as="article"
+      className={projectCardStyles.card}
+      fillWidth
+      gap="m"
+      radius="m"
+      border="neutral-medium"
+      padding="m"
+    >
       <header className={styles.header}>
         <div className={styles.titleIconBox}>
           <TitleIcon className={styles.titleIcon} aria-hidden="true" />
@@ -41,6 +51,6 @@ export const ToolCard: React.FC<ToolCardProps> = ({
           </div>
         ))}
       </div>
-    </article>
+    </Column>
   );
 };
