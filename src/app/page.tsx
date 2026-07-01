@@ -166,7 +166,7 @@ export default function Home() {
 
         <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance" align="center">
           I build web experiences from front to back, focusing on clean design, solid functionality, and real-world impact.
-          <br>
+          <br />
           I write the code, fix the bugs, and ship stuff that works.
         </Text>
 
