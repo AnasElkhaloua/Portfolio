@@ -160,12 +160,14 @@ export default function Home() {
 
         <Row gap="4" vertical="center" wrap horizontal="center" s={{ direction: "column", horizontal: "center" }}>
           <Heading variant="heading-default-xl" onBackground="neutral-weak" as="p" align="center">
-            {person.role} in {person.location.split("/")[1]}
+            Full Stack Developer
           </Heading>
         </Row>
 
         <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance" align="center">
           I build web experiences from front to back, focusing on clean design, solid functionality, and real-world impact.
+          <br>
+          I write the code, fix the bugs, and ship stuff that works.
         </Text>
 
         <Row gap="m" wrap horizontal="center" s={{ direction: "column", fillWidth: true, horizontal: "center" }}>
