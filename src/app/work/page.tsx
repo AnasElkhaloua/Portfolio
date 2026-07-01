@@ -75,7 +75,7 @@ export default function Work() {
         }}
       />
       <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-        What I've Built
+        A Few Things I've Made
       </Heading>
 
       {/* Projects Grid */}
