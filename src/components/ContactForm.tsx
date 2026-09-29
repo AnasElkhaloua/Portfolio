@@ -2,6 +2,7 @@
 
 import { Column, Row, Heading, Text, Button } from "@once-ui-system/core";
 import { useState } from "react";
+import styles from "./ContactForm.module.scss";
 
 export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,9 +15,7 @@ export const ContactForm: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [submitMessage, setSubmitMessage] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -72,13 +71,6 @@ export const ContactForm: React.FC = () => {
     transition: "border-color 0.2s, background-color 0.2s",
   };
 
-  const formContainerStyle: React.CSSProperties = {
-    border: "1px solid var(--data-border-neutral-medium)",
-    borderRadius: "var(--static-border-radius-m)",
-    padding: "var(--static-space-l)",
-    backgroundColor: "var(--data-surface-weak-on)",
-  };
-
   return (
     <Column as="section" fillWidth gap="l" maxWidth="m" horizontal="center" align="center">
       {/* Heading */}
@@ -92,16 +84,19 @@ export const ContactForm: React.FC = () => {
       </Column>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} style={{ width: "100%", ...formContainerStyle }}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <Column gap="m" fillWidth>
           {/* Name and Email - Side by side on desktop, stacked on mobile */}
-          <Row
-            fillWidth
-            gap="l"
-            s={{ direction: "column", gap: "l" }}
-          >
+          <Row fillWidth gap="l" s={{ direction: "column", gap: "l" }}>
             <Column flex={1} fillWidth horizontal="start" align="start">
-              <label htmlFor="name" style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}>
+              <label
+                htmlFor="name"
+                style={{
+                  marginBottom: "var(--static-space-2)",
+                  display: "block",
+                  textAlign: "left",
+                }}
+              >
                 <Text variant="body-default-s">Name</Text>
               </label>
               <input
@@ -116,7 +111,14 @@ export const ContactForm: React.FC = () => {
               />
             </Column>
             <Column flex={1} fillWidth horizontal="start" align="start">
-              <label htmlFor="email" style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}>
+              <label
+                htmlFor="email"
+                style={{
+                  marginBottom: "var(--static-space-2)",
+                  display: "block",
+                  textAlign: "left",
+                }}
+              >
                 <Text variant="body-default-s">Email</Text>
               </label>
               <input
@@ -134,7 +136,10 @@ export const ContactForm: React.FC = () => {
 
           {/* Phone Number - Full width */}
           <Column fillWidth horizontal="start" align="start">
-            <label htmlFor="phone" style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}>
+            <label
+              htmlFor="phone"
+              style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}
+            >
               <Text variant="body-default-s">Phone Number</Text>
             </label>
             <input
@@ -150,7 +155,10 @@ export const ContactForm: React.FC = () => {
 
           {/* Message - Full width */}
           <Column fillWidth horizontal="start" align="start">
-            <label htmlFor="message" style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}>
+            <label
+              htmlFor="message"
+              style={{ marginBottom: "var(--static-space-2)", display: "block", textAlign: "left" }}
+            >
               <Text variant="body-default-s">Message</Text>
             </label>
             <textarea
@@ -173,7 +181,10 @@ export const ContactForm: React.FC = () => {
             <Text
               variant="body-default-s"
               style={{
-                color: submitStatus === "success" ? "var(--intent-success-strong)" : "var(--intent-danger-strong)",
+                color:
+                  submitStatus === "success"
+                    ? "var(--intent-success-strong)"
+                    : "var(--intent-danger-strong)",
                 textAlign: "center",
               }}
             >
