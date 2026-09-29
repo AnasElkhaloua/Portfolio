@@ -1,6 +1,4 @@
-"use client";
-
-import { Column, Row, Heading, Text, Button } from "@once-ui-system/core";
+import { Column, Heading, Text, Button } from "@once-ui-system/core";
 import Image from "next/image";
 import styles from "./ProjectCard.module.scss";
 
@@ -18,9 +16,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   visitUrl,
 }) => {
   return (
-    <Column 
+    <Column
       className={styles.card}
-      fillWidth 
+      fillWidth
       gap="0"
       radius="m"
       border="neutral-medium"
@@ -39,7 +37,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       {/* Content */}
-      <Column 
+      <Column
         paddingX="m"
         paddingY="m"
         gap="m"
@@ -51,12 +49,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <Heading variant="heading-strong-m" as="h3" align="center">
           {title}
         </Heading>
-        
-        <Text 
-          variant="body-default-s" 
-          onBackground="neutral-weak"
-          align="center"
-        >
+
+        <Text variant="body-default-s" onBackground="neutral-weak" align="center">
           {description}
         </Text>
 

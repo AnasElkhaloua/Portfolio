@@ -21,11 +21,9 @@ type Metadata = {
   link?: string;
 };
 
-import { notFound } from "next/navigation";
-
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
-    notFound();
+    return [];
   }
 
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
@@ -33,7 +31,7 @@ function getMDXFiles(dir: string) {
 
 function readMDXFile(filePath: string) {
   if (!fs.existsSync(filePath)) {
-    notFound();
+    return null;
   }
 
   const rawContent = fs.readFileSync(filePath, "utf-8");
@@ -56,19 +54,18 @@ function readMDXFile(filePath: string) {
 
 function getMDXData(dir: string) {
   const mdxFiles = getMDXFiles(dir);
-  return mdxFiles.map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file));
-    const slug = path.basename(file, path.extname(file));
+  return mdxFiles.flatMap((file) => {
+    const result = readMDXFile(path.join(dir, file));
+    if (!result) return [];
 
-    return {
-      metadata,
-      slug,
-      content,
-    };
+    return [{ ...result, slug: path.basename(file, path.extname(file)) }];
   });
 }
 
-export function getPosts(customPath = ["", "", "", ""]) {
-  const postsDir = path.join(process.cwd(), ...customPath);
-  return getMDXData(postsDir);
+export function getProjectPosts() {
+  return getMDXData(path.join(process.cwd(), "src", "app", "work", "projects"));
+}
+
+export function getBlogPosts() {
+  return getMDXData(path.join(process.cwd(), "src", "app", "blog", "posts"));
 }

@@ -5,7 +5,7 @@ export { ProjectCard } from "@/components/ProjectCard";
 export { ToolCard } from "@/components/ToolCard";
 export { ContactForm } from "@/components/ContactForm";
 export { HeadingLink } from "@/components/HeadingLink";
-export { RouteGuard } from "@/components/RouteGuard";
+export { PasswordProtection } from "@/components/PasswordProtection";
 export { Providers } from "@/components/Providers";
 export { ScrollToHash } from "@/components/ScrollToHash";
 export { ThemeToggle } from "@/components/ThemeToggle";

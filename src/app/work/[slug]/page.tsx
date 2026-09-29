@@ -1,28 +1,27 @@
 import { notFound } from "next/navigation";
-import { getPosts } from "@/utils/utils";
+import { cookies } from "next/headers";
+import { getProjectPosts } from "@/utils/utils";
 import {
   Meta,
   Schema,
   AvatarGroup,
-  Button,
   Column,
-  Flex,
   Heading,
   Media,
   Text,
   SmartLink,
   Row,
-  Avatar,
   Line,
 } from "@once-ui-system/core";
-import { baseURL, about, person, work } from "@/resources";
+import { baseURL, about, person, protectedRoutes, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ScrollToHash, CustomMDX, PasswordProtection } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
+import { ROUTE_ACCESS_COOKIE, verifyRouteAccessToken } from "@/utils/routeAccess";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = getPosts(["src", "app", "work", "projects"]);
+  const posts = getProjectPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -38,8 +37,17 @@ export async function generateMetadata({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  const posts = getPosts(["src", "app", "work", "projects"]);
-  let post = posts.find((post) => post.slug === slugPath);
+  const routePath = `${work.path}/${slugPath}`;
+  if (protectedRoutes[routePath as keyof typeof protectedRoutes]) {
+    return {
+      title: "Protected project",
+      description: "This project is password protected.",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const posts = getProjectPosts();
+  const post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
 
@@ -62,7 +70,16 @@ export default async function Project({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  let post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
+  const routePath = `${work.path}/${slugPath}`;
+  if (protectedRoutes[routePath as keyof typeof protectedRoutes]) {
+    const cookieStore = await cookies();
+    const token = cookieStore.get(ROUTE_ACCESS_COOKIE)?.value;
+    if (!verifyRouteAccessToken(token, routePath)) {
+      return <PasswordProtection path={routePath} />;
+    }
+  }
+
+  const post = getProjectPosts().find((post) => post.slug === slugPath);
 
   if (!post) {
     notFound();
