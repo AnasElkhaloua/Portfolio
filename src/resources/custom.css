@@ -67,3 +67,32 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+
+[data-theme="light"] {
+  --page-background: #f7f7f5;
+  --brand-background-strong: #d4d4cf;
+
+  --neutral-background-strong: #e8e8e4;
+  --neutral-background-medium: #f1f1ee;
+  --neutral-background-weak: #ffffff;
+
+  --neutral-on-background-strong: #18181b;
+  --neutral-on-background-medium: #3f3f42;
+  --neutral-on-background-weak: #656565;
+
+  --neutral-border-strong: #b8b8b2;
+  --neutral-border-medium: #d4d4cf;
+  --neutral-border-weak: #e4e4e0;
+
+  --neutral-alpha-strong: rgba(24, 24, 27, 0.22);
+  --neutral-alpha-medium: rgba(24, 24, 27, 0.14);
+  --neutral-alpha-weak: rgba(24, 24, 27, 0.08);
+
+  --surface-background: #ffffff;
+  --surface-border: #e4e4e0;
+
+  --data-surface-default: #ffffff;
+  --data-surface-weak: #f7f7f5;
+  --data-surface-weak-on: #f1f1ee;
+  --data-border-neutral-medium: #d4d4cf;
+}
