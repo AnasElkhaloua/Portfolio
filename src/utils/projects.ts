@@ -19,6 +19,7 @@ const FRONTMATTER_KEYS = new Set([
   "images",
   "stack",
   "featured",
+  "featuredOrder",
   "order",
   "externalUrl",
   "caseStudy",
@@ -113,6 +114,20 @@ function validateProject(
     fail(fileName, "order", "a non-negative integer");
   }
 
+  const featured = booleanField(data, "featured", fileName);
+  const featuredOrder = data.featuredOrder;
+  if (featured) {
+    if (
+      typeof featuredOrder !== "number" ||
+      !Number.isInteger(featuredOrder) ||
+      featuredOrder < 0
+    ) {
+      fail(fileName, "featuredOrder", "a non-negative integer when featured is true");
+    }
+  } else if (featuredOrder !== undefined) {
+    fail(fileName, "featuredOrder", "omitted when featured is false");
+  }
+
   const access = data.access;
   if (access !== "public" && access !== "protected") {
     fail(fileName, "access", 'either "public" or "protected"');
@@ -133,7 +148,8 @@ function validateProject(
     image: stringField(data, "image", fileName),
     images: stringArrayField(data, "images", fileName),
     stack: [...new Set(stringArrayField(data, "stack", fileName))],
-    featured: booleanField(data, "featured", fileName),
+    featured,
+    ...(typeof featuredOrder === "number" ? { featuredOrder } : {}),
     order,
     published: booleanField(data, "published", fileName),
     access: access as ProjectAccess,
@@ -179,7 +195,9 @@ export function getProjects() {
 }
 
 export function getFeaturedProjects() {
-  return getProjects().filter((project) => project.metadata.featured);
+  return getProjects()
+    .filter((project) => project.metadata.featured)
+    .sort((a, b) => (a.metadata.featuredOrder ?? 0) - (b.metadata.featuredOrder ?? 0));
 }
 
 export function getProjectBySlug(slug: string) {

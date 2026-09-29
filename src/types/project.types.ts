@@ -15,6 +15,7 @@ type ProjectMetadataBase = {
   images: string[];
   stack: string[];
   featured: boolean;
+  featuredOrder?: number;
   order: number;
   published: boolean;
   access: ProjectAccess;

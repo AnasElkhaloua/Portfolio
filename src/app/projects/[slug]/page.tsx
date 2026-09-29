@@ -80,7 +80,7 @@ export default async function ProjectPage({ params }: ProjectRouteProps) {
   const heroImage = project.metadata.images[0] || project.metadata.image;
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <Column as="section" maxWidth="m" paddingTop="24" horizontal="center" gap="l">
       <Schema
         as="blogPosting"
         baseURL={baseURL}
