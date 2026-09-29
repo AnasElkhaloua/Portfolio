@@ -157,7 +157,7 @@ export default function Home() {
           s={{ direction: "column", horizontal: "center" }}
         >
           <Heading variant="heading-default-xl" onBackground="neutral-weak" as="p" align="center">
-            Full Stack Developer
+            Full-Stack Developer
           </Heading>
         </Row>
 

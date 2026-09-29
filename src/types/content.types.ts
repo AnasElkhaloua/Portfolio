@@ -23,8 +23,14 @@ export type Person = {
   avatar: string;
   /** Email address */
   email: string;
+  /** Public phone number */
+  phone?: string;
+  /** Public website URL */
+  website?: string;
   /** IANA time zone location */
   location: IANATimeZone;
+  /** Human-readable location */
+  locationLabel?: string;
   /** Languages spoken */
   languages?: string[];
 };
@@ -150,6 +156,8 @@ export interface Resume extends BasePageConfig {
       timeframe: string;
       /** Role or job title */
       role: string;
+      /** Work location */
+      location?: string;
       /** Achievements at the company */
       achievements: React.ReactNode[];
       /** Images related to the experience */

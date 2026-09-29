@@ -5,10 +5,13 @@ const person: Person = {
   firstName: "Anas",
   lastName: "El Khaloua",
   name: `Anas El Khaloua`,
-  role: "Web Developer",
+  role: "Full-Stack Developer",
   avatar: "/images/avatar.jpg",
   email: "anaselkhaloua06@gmail.com",
+  phone: "+212 624 651 236",
+  website: "https://anaselkhaloua.com",
   location: "Africa/Casablanca", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  locationLabel: "Casablanca, Morocco",
   languages: ["Arabic", "English", "French"], // optional: Leave the array empty if you don't want to display languages
 };
 
@@ -40,14 +43,26 @@ const social: Social = [
     link: `mailto:${person.email}`,
     essential: true,
   },
+  {
+    name: "Website",
+    icon: "globe",
+    link: person.website ?? "",
+    essential: true,
+  },
+  {
+    name: "Phone",
+    icon: "phone",
+    link: person.phone ? `tel:${person.phone.replace(/\s/g, "")}` : "",
+    essential: true,
+  },
 ];
 
 const home: Home = {
   path: "/",
   image: "/images/og/og.jpg",
   label: "Home",
-  title: `${person.name} – Web Developer`,
-  description: `Portfolio of ${person.name}, a Full Stack web developer based in Marrakesh, Morocco.`,
+  title: `${person.name} – Full-Stack Developer`,
+  description: `Portfolio of ${person.name}, a Full-Stack Developer based in Casablanca, Morocco.`,
   headline: <>Building fast, clean websites that actually rank.</>,
   featured: {
     display: false,
@@ -64,11 +79,11 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Anas, a web developer based in{" "}
+      I'm Anas, a Full-Stack Developer based in{" "}
       <Text as="span" size="xl" weight="strong">
-        Marrakesh, Morocco
+        Casablanca, Morocco
       </Text>
-      , specializing in WordPress, SEO, and custom theme and plugin development.
+      , working across modern front-end platforms, custom WordPress, APIs, and performance.
     </>
   ),
 };
@@ -77,7 +92,7 @@ const resume: Resume = {
   path: "/resume",
   label: "Resume",
   title: `Resume – ${person.name}`,
-  description: `Work experience and education of ${person.name}, ${person.role} based in Marrakesh, Morocco.`,
+  description: `Experience, skills, and education of ${person.name}, a ${person.role} based in Casablanca, Morocco.`,
   tableOfContent: {
     display: false,
     subItems: false,
@@ -90,12 +105,20 @@ const resume: Resume = {
     link: "",
   },
   intro: {
-    display: false,
+    display: true,
     title: "Introduction",
     description: (
       <>
-        Anas is a Marrakesh-based web developer with over 3 years of experience building WordPress
-        websites, custom themes, plugins, and SEO-optimized solutions.
+        <Text as="p">
+          Front-End / Full-Stack developer with 4+ years of experience across custom WordPress and
+          e-commerce development, React, Vue, and Next.js front-end work on a SaaS platform, API
+          integration, and performance and accessibility optimization.
+        </Text>
+        <Text as="p">
+          AI-assisted development is part of the daily workflow, using Claude Code, GitHub Copilot,
+          Cursor, Windsurf, and ChatGPT for development, debugging, code review, and repetitive-task
+          automation while maintaining clean and maintainable code.
+        </Text>
       </>
     ),
   },
@@ -104,70 +127,84 @@ const resume: Resume = {
     title: "Work Experience",
     experiences: [
       {
-        company: "Freelance",
-        timeframe: "Jan 2025 - Present",
-        role: "Full Stack Developer",
+        company: "SOPHAX",
+        timeframe: "Jan 2025 – Apr 2026",
+        role: "Full-Stack Developer",
+        location: "Remote",
         achievements: [
-          <>Delivered custom web solutions for clients across e-commerce and corporate sectors.</>,
           <>
-            Built responsive websites with high PageSpeed scores and comprehensive SEO optimization.
+            Built front-end features with React for the company's internal SaaS/CRM order-management
+            platform, with occasional contributions to back-end API endpoints.
           </>,
           <>
-            Developed custom themes and plugins with API integrations for enhanced functionality.
+            Built custom WordPress solutions for business and e-commerce websites, using AI
+            development tools such as Claude Code to accelerate prototyping and debugging.
+          </>,
+          <>Created and customized WordPress themes and plugins.</>,
+          <>
+            Integrated REST APIs and third-party services including Klaviyo and Google Sheets via
+            webhooks.
+          </>,
+          <>
+            Optimized Core Web Vitals, PageSpeed performance, alt text, color contrast, and other
+            accessibility and WCAG issues.
+          </>,
+          <>Set up and managed Cloudflare, CDN, DNS, and security configuration.</>,
+          <>
+            Maintained, debugged, and continuously improved multiple production websites and
+            applications.
           </>,
         ],
         images: [],
       },
       {
         company: "Twily",
-        timeframe: "Jun 2024 - Jan 2025",
+        timeframe: "Jun 2024 – 2025",
         role: "WordPress Developer",
         achievements: [
-          <>
-            Developed responsive WordPress websites from UI designs with seamless cross-device
-            compatibility.
-          </>,
-          <>
-            Improved client website SEO rankings through strategic on-page and off-page
-            optimization.
-          </>,
-          <>Optimized website performance using PageSpeed Insights and GTmetrix.</>,
+          <>Built responsive websites from Figma UI mockups.</>,
+          <>Improved SEO and performance using PageSpeed Insights and GTmetrix.</>,
         ],
         images: [],
       },
       {
         company: "Cvcsupplies Ltd",
-        timeframe: "Sep 2023 - May 2024",
+        timeframe: "Sep 2023 – May 2024",
         role: "WordPress Developer",
         achievements: [
-          <>
-            Development and maintenance of WordPress websites ensuring high quality and optimal
-            functionality.
-          </>,
-          <>
-            Implementation of on-page and off-page SEO strategies to improve performance and
-            increase rankings.
-          </>,
-          <>Backlink analysis and outreach to build a strong link profile.</>,
-          <>
-            Customization of themes and integration of APIs to extend functionalities and meet
-            client needs.
-          </>,
+          <>Developed and maintained WordPress sites for multiple clients.</>,
+          <>Implemented SEO strategies and optimized page-load performance.</>,
+          <>Integrated APIs and customized themes to match client requirements.</>,
         ],
         images: [],
       },
       {
         company: "Hello World Agency",
-        timeframe: "Jun 2022 - Sep 2022",
+        timeframe: "Jun 2022 – Sep 2022",
         role: "Junior PHP Web Developer",
         achievements: [
-          <>Designed and developed user interfaces with HTML, CSS, Bootstrap, and Tailwind CSS.</>,
-          <>Built dynamic server-side web applications using PHP and MySQL.</>,
-          <>Ensured cross-browser compatibility and responsiveness across all devices.</>,
-          <>
-            Collaborated with the team to ensure smooth integration of front-end and back-end
-            features.
-          </>,
+          <>Built web interfaces using HTML, CSS, Bootstrap, and Tailwind.</>,
+          <>Created dynamic PHP applications with MySQL database management.</>,
+          <>Worked within a team to deliver complete front-end and back-end integration.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Commune de Sidi L'Mokhtar",
+        timeframe: "Jan 2021 – Apr 2021",
+        role: "IT Technician Intern",
+        achievements: [
+          <>Provided technical support and equipment maintenance.</>,
+          <>Resolved IT incidents.</>,
+        ],
+        images: [],
+      },
+      {
+        company: "Provincial Directorate of National Education, Chichaoua",
+        timeframe: "Jul 2019 – Aug 2019",
+        role: "IT Technician Intern",
+        achievements: [
+          <>Developed a training-management application for teachers using Microsoft Access.</>,
         ],
         images: [],
       },
@@ -178,29 +215,69 @@ const resume: Resume = {
     title: "Education",
     institutions: [
       {
-        name: "Cadi Ayyad University Semlalia – Marrakech",
+        name: "Cadi Ayyad University, Semlalia, Marrakech",
         description: (
           <>
-            Bachelor's Degree in Network Engineering, Web and Security (2022–2023). Covered
-            Java/JEE, PHP, UML, databases, network security, and mobile application programming.
+            Bachelor's in Network, Web & Security Engineering (2022–2023). Relevant areas included
+            networking, systems security, Java and PHP programming, databases, and mobile
+            development.
           </>
         ),
       },
       {
-        name: "Technical High School – Chichaoua",
+        name: "Lycée Technique, Chichaoua",
         description: (
           <>
-            Associate Degree in Multimedia and Web Design — MCW (2018–2020). HTML, CSS, JavaScript,
-            PHP/MySQL, UI/UX design, Adobe Creative Suite, and OOP with Java.
+            BTS in Multimedia & Web Design (2018–2020). Relevant areas included HTML, CSS,
+            JavaScript, PHP, MySQL, graphic design, UI/UX, and object-oriented programming.
           </>
         ),
+      },
+      {
+        name: "Lycée Technique, Chichaoua",
+        description: <>Baccalaureate in Electrical Sciences & Technology (2018).</>,
       },
     ],
   },
   technical: {
-    display: false,
-    title: "Technical skills",
-    skills: [],
+    display: true,
+    title: "Skills & Languages",
+    skills: [
+      {
+        title: "Front-End",
+        description:
+          "React, Vue, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Bootstrap, and jQuery.",
+      },
+      {
+        title: "Back-End & API",
+        description:
+          "PHP, MySQL, Prisma, OAuth, REST API design and consumption, Postman, and Docker.",
+      },
+      {
+        title: "WordPress & E-commerce",
+        description:
+          "Custom themes, custom plugins, Elementor, WooCommerce, Custom Post Types, and ACF.",
+      },
+      {
+        title: "AI Development Tools",
+        description:
+          "Claude, Claude Code, GitHub Copilot, Cursor, Windsurf, and ChatGPT for code assistance, debugging, code review, and repetitive-task automation.",
+      },
+      {
+        title: "Performance, Accessibility & SEO",
+        description:
+          "Core Web Vitals, PageSpeed Insights, GTmetrix, on-page and off-page SEO, WCAG accessibility, alt text, and color contrast.",
+      },
+      {
+        title: "Tools & Platforms",
+        description:
+          "Git, GitHub, branching, pull requests, merging, Vercel, Cloudflare, DNS, CDN, security, cPanel, hPanel, Figma, and Photoshop.",
+      },
+      {
+        title: "Languages",
+        description: "Arabic — Native; English — Advanced; French — Intermediate.",
+      },
+    ],
   },
 };
 

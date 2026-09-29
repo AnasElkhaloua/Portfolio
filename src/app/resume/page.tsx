@@ -68,6 +68,26 @@ export default function ResumePage() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: person.name,
+            jobTitle: person.role,
+            url: person.website,
+            email: `mailto:${person.email}`,
+            telephone: person.phone,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Casablanca",
+              addressCountry: "MA",
+            },
+            knowsLanguage: ["Arabic", "English", "French"],
+          }),
+        }}
+      />
       {resume.tableOfContent.display && (
         <Column
           left="0"
@@ -155,6 +175,14 @@ export default function ResumePage() {
             >
               {person.role}
             </Text>
+            <Text
+              className={styles.textAlign}
+              variant="body-default-m"
+              onBackground="neutral-weak"
+              marginTop="4"
+            >
+              {person.locationLabel}
+            </Text>
             {social.length > 0 && (
               <Row
                 className={styles.blockAlign}
@@ -223,6 +251,7 @@ export default function ResumePage() {
                     </Row>
                     <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
                       {experience.role}
+                      {experience.location ? ` · ${experience.location}` : ""}
                     </Text>
                     <Column as="ul" gap="16">
                       {experience.achievements.map(
