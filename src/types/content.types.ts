@@ -59,7 +59,7 @@ export type Social = Array<{
    * The link is not validated by code, make sure it's correct
    */
   link: string;
-  /** Whether this social link is essential and should be displayed on the about page */
+  /** Whether this social link is essential and should be displayed on the resume page */
   essential?: boolean;
 }>;
 
@@ -104,10 +104,10 @@ export interface Home extends BasePageConfig {
 }
 
 /**
- * About page configuration.
- * @description Configuration for the About page, including sections for table of contents, avatar, calendar, introduction, work experience, studies, and technical skills.
+ * Resume page configuration.
+ * @description Configuration for the Resume page, including sections for table of contents, avatar, calendar, introduction, work experience, studies, and technical skills.
  */
-export interface About extends BasePageConfig {
+export interface Resume extends BasePageConfig {
   /** Table of contents configuration */
   tableOfContent: {
     /** Whether to display the table of contents */
@@ -218,10 +218,10 @@ export interface About extends BasePageConfig {
 export interface Blog extends BasePageConfig {}
 
 /**
- * Work/projects page configuration.
- * @description Configuration for the Work/Projects page, including metadata and navigation label.
+ * Projects page configuration.
+ * @description Configuration for the Projects page, including metadata and navigation label.
  */
-export interface Work extends BasePageConfig {}
+export interface Projects extends BasePageConfig {}
 
 /**
  * Gallery page configuration.

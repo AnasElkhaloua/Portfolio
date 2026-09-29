@@ -35,7 +35,7 @@ src/resources/content.js
 
 **6. Create blog posts / projects**
 ```
-Add a new .mdx file to src/app/blog/posts or src/app/work/projects
+Add project metadata or a case study as an `.mdx` file in `src/app/projects/content`.
 ```
 
 Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
@@ -60,7 +60,7 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 
 ### Content
 - Render sections conditionally based on the content file
-- Enable or disable pages for blog, work, gallery and about / CV
+- Enable or disable pages for blog, projects, gallery, and resume / CV
 - Generate and display social links automatically
 - Set up password protection for URLs
 

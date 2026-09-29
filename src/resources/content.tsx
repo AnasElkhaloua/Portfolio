@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { Blog, Gallery, Home, Newsletter, Person, Projects, Resume, Social } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -21,7 +21,7 @@ const newsletter: Newsletter = {
 const social: Social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
+  // Set essentials: true for links you want to show on the resume page
   {
     name: "GitHub",
     icon: "github",
@@ -60,19 +60,21 @@ const home: Home = {
         </Text>
       </Row>
     ),
-    href: "/work",
+    href: "/projects",
   },
   subline: (
     <>
       I'm Anas, a web developer based in{" "}
-      <Text as="span" size="xl" weight="strong">Marrakesh, Morocco</Text>
+      <Text as="span" size="xl" weight="strong">
+        Marrakesh, Morocco
+      </Text>
       , specializing in WordPress, SEO, and custom theme and plugin development.
     </>
   ),
 };
 
-const about: About = {
-  path: "/about",
+const resume: Resume = {
+  path: "/resume",
   label: "Resume",
   title: `Resume – ${person.name}`,
   description: `Work experience and education of ${person.name}, ${person.role} based in Marrakesh, Morocco.`,
@@ -92,8 +94,8 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Anas is a Marrakesh-based web developer with over 3 years of experience building
-        WordPress websites, custom themes, plugins, and SEO-optimized solutions.
+        Anas is a Marrakesh-based web developer with over 3 years of experience building WordPress
+        websites, custom themes, plugins, and SEO-optimized solutions.
       </>
     ),
   },
@@ -107,8 +109,12 @@ const about: About = {
         role: "Full Stack Developer",
         achievements: [
           <>Delivered custom web solutions for clients across e-commerce and corporate sectors.</>,
-          <>Built responsive websites with high PageSpeed scores and comprehensive SEO optimization.</>,
-          <>Developed custom themes and plugins with API integrations for enhanced functionality.</>,
+          <>
+            Built responsive websites with high PageSpeed scores and comprehensive SEO optimization.
+          </>,
+          <>
+            Developed custom themes and plugins with API integrations for enhanced functionality.
+          </>,
         ],
         images: [],
       },
@@ -117,8 +123,14 @@ const about: About = {
         timeframe: "Jun 2024 - Jan 2025",
         role: "WordPress Developer",
         achievements: [
-          <>Developed responsive WordPress websites from UI designs with seamless cross-device compatibility.</>,
-          <>Improved client website SEO rankings through strategic on-page and off-page optimization.</>,
+          <>
+            Developed responsive WordPress websites from UI designs with seamless cross-device
+            compatibility.
+          </>,
+          <>
+            Improved client website SEO rankings through strategic on-page and off-page
+            optimization.
+          </>,
           <>Optimized website performance using PageSpeed Insights and GTmetrix.</>,
         ],
         images: [],
@@ -128,10 +140,19 @@ const about: About = {
         timeframe: "Sep 2023 - May 2024",
         role: "WordPress Developer",
         achievements: [
-          <>Development and maintenance of WordPress websites ensuring high quality and optimal functionality.</>,
-          <>Implementation of on-page and off-page SEO strategies to improve performance and increase rankings.</>,
+          <>
+            Development and maintenance of WordPress websites ensuring high quality and optimal
+            functionality.
+          </>,
+          <>
+            Implementation of on-page and off-page SEO strategies to improve performance and
+            increase rankings.
+          </>,
           <>Backlink analysis and outreach to build a strong link profile.</>,
-          <>Customization of themes and integration of APIs to extend functionalities and meet client needs.</>,
+          <>
+            Customization of themes and integration of APIs to extend functionalities and meet
+            client needs.
+          </>,
         ],
         images: [],
       },
@@ -143,7 +164,10 @@ const about: About = {
           <>Designed and developed user interfaces with HTML, CSS, Bootstrap, and Tailwind CSS.</>,
           <>Built dynamic server-side web applications using PHP and MySQL.</>,
           <>Ensured cross-browser compatibility and responsiveness across all devices.</>,
-          <>Collaborated with the team to ensure smooth integration of front-end and back-end features.</>,
+          <>
+            Collaborated with the team to ensure smooth integration of front-end and back-end
+            features.
+          </>,
         ],
         images: [],
       },
@@ -157,8 +181,8 @@ const about: About = {
         name: "Cadi Ayyad University Semlalia – Marrakech",
         description: (
           <>
-            Bachelor's Degree in Network Engineering, Web and Security (2022–2023).
-            Covered Java/JEE, PHP, UML, databases, network security, and mobile application programming.
+            Bachelor's Degree in Network Engineering, Web and Security (2022–2023). Covered
+            Java/JEE, PHP, UML, databases, network security, and mobile application programming.
           </>
         ),
       },
@@ -166,8 +190,8 @@ const about: About = {
         name: "Technical High School – Chichaoua",
         description: (
           <>
-            Associate Degree in Multimedia and Web Design — MCW (2018–2020).
-            HTML, CSS, JavaScript, PHP/MySQL, UI/UX design, Adobe Creative Suite, and OOP with Java.
+            Associate Degree in Multimedia and Web Design — MCW (2018–2020). HTML, CSS, JavaScript,
+            PHP/MySQL, UI/UX design, Adobe Creative Suite, and OOP with Java.
           </>
         ),
       },
@@ -187,8 +211,8 @@ const blog: Blog = {
   description: `Read what ${person.name} has been writing about recently`,
 };
 
-const work: Work = {
-  path: "/work",
+const projects: Projects = {
+  path: "/projects",
   label: "Projects",
   title: `Projects – ${person.name}`,
   description: `WordPress and web projects by ${person.name}`,
@@ -202,4 +226,4 @@ const gallery: Gallery = {
   images: [],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, resume, blog, projects, gallery };

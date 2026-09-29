@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { protectedRoutes } from "@/resources";
+import { getProtectedProjectByPath } from "@/utils/projects";
 import {
   createRouteAccessToken,
   passwordsMatch,
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
   if (
     typeof password !== "string" ||
     typeof path !== "string" ||
-    !protectedRoutes[path as keyof typeof protectedRoutes]
+    !getProtectedProjectByPath(path)
   ) {
     return NextResponse.json({ message: "Invalid request" }, { status: 400 });
   }

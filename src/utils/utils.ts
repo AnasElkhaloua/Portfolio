@@ -16,7 +16,7 @@ type Metadata = {
   summary: string;
   image?: string;
   images: string[];
-  tag?: string;
+  tag?: string[];
   team: Team[];
   link?: string;
 };
@@ -60,10 +60,6 @@ function getMDXData(dir: string) {
 
     return [{ ...result, slug: path.basename(file, path.extname(file)) }];
   });
-}
-
-export function getProjectPosts() {
-  return getMDXData(path.join(process.cwd(), "src", "app", "work", "projects"));
 }
 
 export function getBlogPosts() {

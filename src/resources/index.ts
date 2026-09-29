@@ -4,9 +4,9 @@ export {
   social,
   newsletter,
   home,
-  about,
+  resume,
   blog,
-  work,
+  projects,
   gallery,
 } from "./content";
 
@@ -14,7 +14,6 @@ export {
   display,
   mailchimp,
   routes,
-  protectedRoutes,
   baseURL,
   fonts,
   style,

@@ -1,4 +1,5 @@
-import { getBlogPosts, getProjectPosts } from "@/utils/utils";
+import { getBlogPosts } from "@/utils/utils";
+import { getCaseStudyProjects } from "@/utils/projects";
 import { baseURL, routes as routesConfig } from "@/resources";
 
 export default async function sitemap() {
@@ -7,10 +8,12 @@ export default async function sitemap() {
     lastModified: post.metadata.publishedAt,
   }));
 
-  const works = getProjectPosts().map((post) => ({
-    url: `${baseURL}/work/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }));
+  const projects = getCaseStudyProjects()
+    .filter((project) => project.metadata.access === "public")
+    .map((project) => ({
+      url: `${baseURL}/projects/${project.metadata.slug}`,
+      lastModified: project.metadata.publishedAt,
+    }));
 
   const activeRoutes = Object.keys(routesConfig).filter(
     (route) => routesConfig[route as keyof typeof routesConfig],
@@ -21,5 +24,5 @@ export default async function sitemap() {
     lastModified: new Date().toISOString().split("T")[0],
   }));
 
-  return [...routes, ...blogs, ...works];
+  return [...routes, ...blogs, ...projects];
 }

@@ -1,20 +1,15 @@
-import { Column, Heading, Text, Button } from "@once-ui-system/core";
+import { Button, Column, Heading, Row, Tag, Text } from "@once-ui-system/core";
 import Image from "next/image";
+import type { ProjectMetadata } from "@/types/project.types";
 import styles from "./ProjectCard.module.scss";
 
 interface ProjectCardProps {
-  image: string;
-  title: string;
-  description: string;
-  visitUrl: string;
+  project: ProjectMetadata;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({
-  image,
-  title,
-  description,
-  visitUrl,
-}) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const href = project.caseStudy ? `/projects/${project.slug}` : project.externalUrl;
+
   return (
     <Column
       className={styles.card}
@@ -27,8 +22,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* Image with 16:9 ratio */}
       <div className={styles.imageWrapper}>
         <Image
-          src={image}
-          alt={title}
+          src={project.image}
+          alt={project.title}
           width={400}
           height={225}
           className={styles.image}
@@ -47,19 +42,29 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         align="center"
       >
         <Heading variant="heading-strong-m" as="h3" align="center">
-          {title}
+          {project.title}
         </Heading>
 
         <Text variant="body-default-s" onBackground="neutral-weak" align="center">
-          {description}
+          {project.summary}
         </Text>
+
+        {project.stack.length > 0 && (
+          <Row wrap gap="8" horizontal="center">
+            {project.stack.map((technology) => (
+              <Tag key={`${project.slug}-${technology}`} size="s">
+                {technology}
+              </Tag>
+            ))}
+          </Row>
+        )}
 
         <div style={{ marginTop: "auto" }}>
           <Button
-            href={visitUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            label="Visit Site"
+            href={href}
+            target={project.caseStudy ? undefined : "_blank"}
+            rel={project.caseStudy ? undefined : "noopener noreferrer"}
+            label={project.caseStudy ? "View Project" : "Visit Site"}
             variant="primary"
             size="s"
           />
