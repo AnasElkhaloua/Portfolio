@@ -91,13 +91,21 @@ function validateProject(
   const fileSlug = path.basename(fileName, path.extname(fileName));
   if (slug !== fileSlug) fail(fileName, "slug", `identical to the filename (${fileSlug})`);
 
-  const externalUrl = stringField(data, "externalUrl", fileName);
-  try {
-    const url = new URL(externalUrl);
-    if (url.protocol !== "https:" && url.protocol !== "http:")
-      throw new Error("unsupported protocol");
-  } catch {
-    fail(fileName, "externalUrl", "an absolute HTTP(S) URL");
+  const caseStudy = booleanField(data, "caseStudy", fileName);
+  const externalUrlValue = data.externalUrl;
+  let externalUrl: string | undefined;
+  if (externalUrlValue === undefined) {
+    if (!caseStudy) fail(fileName, "externalUrl", "a non-empty string");
+  } else {
+    externalUrl = stringField(data, "externalUrl", fileName);
+    try {
+      const url = new URL(externalUrl);
+      if (url.protocol !== "https:" && url.protocol !== "http:") {
+        throw new Error("unsupported protocol");
+      }
+    } catch {
+      fail(fileName, "externalUrl", "an absolute HTTP(S) URL");
+    }
   }
 
   const order = data.order;
@@ -118,7 +126,7 @@ function validateProject(
     fail(fileName, "publishedAt", "a YYYY-MM-DD date when provided");
   }
 
-  const metadata: ProjectMetadata = {
+  const metadataBase = {
     title: stringField(data, "title", fileName),
     slug,
     summary: stringField(data, "summary", fileName),
@@ -127,13 +135,23 @@ function validateProject(
     stack: [...new Set(stringArrayField(data, "stack", fileName))],
     featured: booleanField(data, "featured", fileName),
     order,
-    externalUrl,
-    caseStudy: booleanField(data, "caseStudy", fileName),
     published: booleanField(data, "published", fileName),
     access: access as ProjectAccess,
     ...(typeof publishedAt === "string" ? { publishedAt } : {}),
     ...(data.team === undefined ? {} : { team: teamField(data, fileName) }),
   };
+
+  const metadata: ProjectMetadata = caseStudy
+    ? {
+        ...metadataBase,
+        caseStudy: true,
+        ...(externalUrl ? { externalUrl } : {}),
+      }
+    : {
+        ...metadataBase,
+        caseStudy: false,
+        externalUrl: externalUrl ?? fail(fileName, "externalUrl", "an absolute HTTP(S) URL"),
+      };
 
   if (metadata.caseStudy && !content.trim()) {
     fail(fileName, "content", "non-empty when caseStudy is true");

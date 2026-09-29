@@ -7,7 +7,7 @@ export type ProjectTeamMember = {
   linkedIn?: string;
 };
 
-export type ProjectMetadata = {
+type ProjectMetadataBase = {
   title: string;
   slug: string;
   summary: string;
@@ -16,13 +16,23 @@ export type ProjectMetadata = {
   stack: string[];
   featured: boolean;
   order: number;
-  externalUrl: string;
-  caseStudy: boolean;
   published: boolean;
   access: ProjectAccess;
   publishedAt?: string;
   team?: ProjectTeamMember[];
 };
+
+export type ProjectMetadata = ProjectMetadataBase &
+  (
+    | {
+        caseStudy: true;
+        externalUrl?: string;
+      }
+    | {
+        caseStudy: false;
+        externalUrl: string;
+      }
+  );
 
 export type Project = {
   metadata: ProjectMetadata;
