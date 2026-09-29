@@ -1,7 +1,7 @@
 /* :root {
   /*
   /* Override default variables here */
-  /*
+/*
   --font-size-display-multiplier:   1;
   --font-size-heading-multiplier:   1;
   --font-size-body-multiplier:      1;
@@ -16,8 +16,8 @@
 
   /*
   /* Example setup for custom colors */
-  /* Generate at: https://once-ui.com/customize */
-  /*
+/* Generate at: https://once-ui.com/customize */
+/*
   --scheme-brand-100: #08002f;
   --scheme-brand-200:  #04025c;
   --scheme-brand-300:  #1f398e;
@@ -71,6 +71,8 @@
 [data-theme="light"] {
   --page-background: #f7f7f5;
   --brand-background-strong: #d4d4cf;
+  --ambient-glow-strong: rgba(112, 105, 91, 0.08);
+  --ambient-glow-soft: rgba(112, 105, 91, 0.04);
 
   --neutral-background-strong: #e8e8e4;
   --neutral-background-medium: #f1f1ee;
@@ -95,4 +97,9 @@
   --data-surface-weak: #f7f7f5;
   --data-surface-weak-on: #f1f1ee;
   --data-border-neutral-medium: #d4d4cf;
+}
+
+[data-theme="dark"] {
+  --ambient-glow-strong: rgba(20, 184, 212, 0.1);
+  --ambient-glow-soft: rgba(20, 184, 212, 0.05);
 }

@@ -111,16 +111,16 @@ const effects: EffectsConfig = {
   },
   dots: {
     display: true,
-    opacity: 40,
+    opacity: 30,
     size: "2",
     color: "brand-background-strong",
   },
   grid: {
-    display: false,
-    opacity: 100,
-    color: "neutral-alpha-medium",
-    width: "0.25rem",
-    height: "0.25rem",
+    display: true,
+    opacity: 30,
+    color: "neutral-alpha-weak",
+    width: "4rem",
+    height: "4rem",
   },
   lines: {
     display: false,

@@ -15,6 +15,7 @@ import {
 } from "@once-ui-system/core";
 import { Footer, Header, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
+import styles from "./layout.module.scss";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -116,6 +117,7 @@ export default async function RootLayout({
         >
           <RevealFx fill position="absolute">
             <Background
+              className={styles.ambientBackground}
               mask={{
                 x: effects.mask.x,
                 y: effects.mask.y,
