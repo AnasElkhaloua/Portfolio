@@ -1,0 +1,59 @@
+.ambientBackground {
+    pointer-events: none;
+}
+
+.ambientBackground::after {
+    content: "";
+    position: absolute;
+    inset: -8rem;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse 44rem 30rem at 12% 10rem,
+            var(--ambient-glow-strong),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 52rem 34rem at 90% 42rem,
+            var(--ambient-glow-soft),
+            transparent 72%
+        );
+    opacity: 0.75;
+    transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+    animation: ambient-drift 36s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+}
+
+@keyframes ambient-drift {
+    to {
+        opacity: 1;
+        transform: translate3d(1.5%, 1%, 0) scale(1.04);
+    }
+}
+
+@media (max-width: 48rem) {
+    .ambientBackground::after {
+        inset: -4rem;
+        background:
+            radial-gradient(
+                ellipse 28rem 22rem at 8% 8rem,
+                var(--ambient-glow-strong),
+                transparent 72%
+            ),
+            radial-gradient(
+                ellipse 32rem 24rem at 96% 34rem,
+                var(--ambient-glow-soft),
+                transparent 74%
+            );
+        opacity: 0.6;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ambientBackground::after {
+        animation: none;
+        opacity: 0.75;
+        transform: none;
+        will-change: auto;
+    }
+}

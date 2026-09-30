@@ -1,0 +1,87 @@
+---
+title: "FuelOps"
+slug: "fuelops"
+summary: "Multi-station operations and finance platform built for fuel station operators, covering fuel operations, shifts, reconciliation, finance, customer credit, reporting, and team management."
+image: "/images/projects/fuelops.jpg"
+images: []
+stack:
+  - "Next.js"
+  - "React"
+  - "TypeScript"
+  - "PostgreSQL"
+  - "Drizzle ORM"
+  - "Better Auth"
+featured: true
+featuredOrder: 1
+order: 1
+externalUrl: "https://fuelops-roan.vercel.app/"
+caseStudy: true
+published: true
+access: "public"
+---
+
+FuelOps is a production-oriented V1 platform built around the operational and financial workflows of multi-station fuel businesses.
+
+**Role:** Full-stack development / Product engineering
+
+## Overview
+
+The application brings fuel operations, shifts, daily reconciliation, finance, customer credit, reporting, and team administration into one server-authorized workspace. Its organization and station model keeps each tenant's data and operational context isolated while supporting people who work across multiple stations.
+
+## The operational problem
+
+Fuel-station records are tightly connected: tank readings affect stock, pump meters feed shift sales, price changes must respect historical shifts, and payments must reconcile without distorting revenue. FuelOps treats these as connected business workflows rather than unrelated data-entry screens.
+
+## Product approach
+
+The product is organized around the work operators perform each day. Fuel views cover tanks, readings, pumps, nozzles, deliveries, prices, and staff assignments. Shift workflows capture opening prices, derive sales from meters, and reconcile against immutable snapshots. Daily close then aggregates operational records into finalized station snapshots with warnings, incidents, and fuel, payment, pump, and nozzle reconciliation.
+
+Search and navigation remain server-authorized across stations, customers, vehicles, shifts, pumps, and tanks. A command palette, keyboard interaction, quick actions, mobile navigation, profile management, settings, and audit presentation keep the larger feature set accessible without moving authorization into the browser.
+
+## Architecture
+
+FuelOps uses Next.js 16, React 19, TypeScript, Tailwind CSS, PostgreSQL, Drizzle ORM, and Better Auth. Playwright covers end-to-end behavior.
+
+The data model combines organization and station boundaries with composite database constraints, transactional workflows, audit events, deterministic seed data, and immutable operational snapshots. Better Auth provides sign-in and session handling, while server-side authorization governs organization membership, station assignments, team administration, invitations, role changes, deactivation, and last-owner protection.
+
+## Fuel and shift operations
+
+Closed shifts retain their opening prices and meter-derived results. A later price change affects later shifts rather than rewriting history. The same principle applies to finalized daily records: historical operational snapshots remain stable while new work continues against the current station state.
+
+This approach supports fuel overview, deliveries, price history, tank readings, pump and nozzle records, shift lifecycle management, daily close, audited incident resolution, and reconciliation without losing historical attribution.
+
+## Finance and customer credit
+
+Finance workflows cover sales, expenses, payments, categories, cash movements, bank deposits, petty cash, reasoned adjustments, and daily cash counts. Money, volume, and price calculations use decimal-safe handling.
+
+Accounting rules are explicit: bank deposits are not expenses or revenue, customer payments are not revenue, and credit sales are not counted twice. Customer records connect vehicles, credit sales, payments, adjustments, ledger activity, and warning-based credit limits with server-side search, filtering, sorting, and pagination.
+
+## Security and data integrity
+
+Authorization follows organization and station boundaries with least-privilege manager and employee permissions. Cross-tenant requests are rejected, invitation lifecycles are protected, and an organization cannot lose its last owner.
+
+Sensitive operations use rate limiting, safe error responses, server-only secrets, and idempotent transaction handling. Attachments use provider-neutral storage with opaque keys, authenticated metadata access, validated PDF/JPEG/PNG/WebP uploads, sanitized filenames, and transactional relationships. Local development and production storage adapters share the same contract.
+
+## Engineering decisions
+
+The central engineering challenge was preserving financial and operational meaning as records move from active work to historical evidence. Immutable shift and daily-close snapshots prevent later edits from silently changing reconciled results. Composite constraints and transactions reinforce authorization and station ownership at the database boundary, while deterministic seed data keeps development and verification reproducible.
+
+## Testing and quality
+
+FuelOps V1 completed a structured engineering certification across 208 requirements: 182 passed, 9 passed with documented limitations, 0 failed, and 17 were out of scope.
+
+Final checks included TypeScript, ESLint, formatting, migration replay, deterministic seed verification, unit tests, PostgreSQL integration tests, Playwright end-to-end tests, attachment regressions, and production smoke tests.
+
+- Unit tests: **43/43**
+- PostgreSQL integration tests: **50/50**
+- Playwright tests: **13/13**
+- Attachment regressions: **2/2**
+- Production smoke tests: **3/3**
+
+These figures describe engineering validation, not customer or business performance.
+
+## Current status
+
+FuelOps is a completed V1 implementation and a production-oriented demonstration of multi-station operations, financial controls, authorization, and data-integrity design. No claim of commercial adoption is made.
+
+<Button href="https://fuelops-roan.vercel.app/" target="_blank" rel="noopener noreferrer" label="Open live application" variant="primary" />

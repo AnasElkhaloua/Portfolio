@@ -1,35 +1,21 @@
 import { Heading, Text, Button, Column, Row, Schema, Meta } from "@once-ui-system/core";
-import { home, about, person, work, baseURL } from "@/resources";
+import { home, resume, person, projects as projectsPage, baseURL } from "@/resources";
 import { ProjectCard } from "@/components/ProjectCard";
+import { getFeaturedProjects } from "@/utils/projects";
 import { ToolCard } from "@/components/ToolCard";
 import { ContactForm } from "@/components/ContactForm";
 import type { IconType } from "react-icons";
-import { LuCode, LuServer, LuCloudCog, LuWrench, LuMonitor, LuUsers, LuBlocks, LuDatabase } from "react-icons/lu";
+import {
+  LuCode,
+  LuServer,
+  LuCloudCog,
+  LuWrench,
+  LuMonitor,
+  LuUsers,
+  LuBlocks,
+  LuDatabase,
+} from "react-icons/lu";
 import styles from "./page.module.scss";
-
-const projects = [
-  {
-    id: 1,
-    title: "Orgatus",
-    description: "A brand website rooted in Moroccan tradition, presenting natural cosmetics inspired by local craftsmanship.",
-    image: "/images/projects/orgatus.jpg",
-    visitUrl: "https://orgatus.com/",
-  },
-  {
-    id: 2,
-    title: "WoodenLife",
-    description: "An online store for handcrafted wooden pieces made for everyday use, blending utility with design.",
-    image: "/images/projects/woodenlife.jpg",
-    visitUrl: "https://woodenlife.store/en/",
-  },
-  {
-    id: 3,
-    title: "Global Management Institute",
-    description: "An academic platform offering business programs from BBA to DBA for professionals and future leaders.",
-    image: "/images/projects/gmi.jpg",
-    visitUrl: "https://gmi-institute.com/",
-  },
-];
 
 interface ToolItem {
   name: string;
@@ -126,16 +112,21 @@ const tools: ToolGroup[] = [
 ];
 
 export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: "/images/og/og.jpg",
-  });
+  return {
+    ...Meta.generate({
+      title: home.title,
+      description: home.description,
+      baseURL: baseURL,
+      path: home.path,
+      image: "/images/og/og.jpg",
+    }),
+    alternates: { canonical: `${baseURL}${home.path}` },
+  };
 }
 
 export default function Home() {
+  const featuredProjects = getFeaturedProjects();
+
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
@@ -147,7 +138,7 @@ export default function Home() {
         image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
         author={{
           name: person.name,
-          url: `${baseURL}${about.path}`,
+          url: `${baseURL}${resume.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
@@ -158,21 +149,32 @@ export default function Home() {
           {person.name}
         </Heading>
 
-        <Row gap="4" vertical="center" wrap horizontal="center" s={{ direction: "column", horizontal: "center" }}>
+        <Row
+          gap="4"
+          vertical="center"
+          wrap
+          horizontal="center"
+          s={{ direction: "column", horizontal: "center" }}
+        >
           <Heading variant="heading-default-xl" onBackground="neutral-weak" as="p" align="center">
-            Full Stack Developer
+            Full-Stack Developer
           </Heading>
         </Row>
 
         <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance" align="center">
-          I build web experiences from front to back, focusing on clean design, solid functionality, and real-world impact.
-          <br />
-          I write the code, fix the bugs, and ship stuff that works.
+          I build web experiences from front to back, focusing on clean design, solid functionality,
+          and real-world impact.
+          <br />I write the code, fix the bugs, and ship stuff that works.
         </Text>
 
-        <Row gap="m" wrap horizontal="center" s={{ direction: "column", fillWidth: true, horizontal: "center" }}>
-          <Button href={about.path} variant="primary" label="View Resume" />
-          <Button href={work.path} variant="secondary" label="See My Work" />
+        <Row
+          gap="m"
+          wrap
+          horizontal="center"
+          s={{ direction: "column", fillWidth: true, horizontal: "center" }}
+        >
+          <Button href={resume.path} variant="primary" label="View Resume" />
+          <Button href={projectsPage.path} variant="secondary" label="See My Work" />
         </Row>
       </Column>
 
@@ -183,19 +185,17 @@ export default function Home() {
         </Heading>
 
         <div className={styles.projectGrid}>
-          {projects.map((project) => (
+          {featuredProjects.map((project, index) => (
             <ProjectCard
-              key={project.id}
-              image={project.image}
-              title={project.title}
-              description={project.description}
-              visitUrl={project.visitUrl}
+              key={project.metadata.slug}
+              project={project.metadata}
+              preload={index === 0}
             />
           ))}
         </div>
 
         <Row fillWidth horizontal="center" marginTop="l">
-          <Button href={work.path} variant="secondary" label="View All Projects" />
+          <Button href={projectsPage.path} variant="secondary" label="View All Projects" />
         </Row>
       </Column>
 

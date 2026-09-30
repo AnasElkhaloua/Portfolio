@@ -7,6 +7,13 @@ const withMDX = mdx({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      { source: "/about", destination: "/resume", permanent: true },
+      { source: "/work", destination: "/projects", permanent: true },
+      { source: "/work/:slug*", destination: "/projects/:slug*", permanent: true },
+    ];
+  },
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["next-mdx-remote"],
   images: {

@@ -18,3 +18,12 @@
         grid-template-columns: 1fr;
     }
 }
+
+.heroImage {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--static-border-radius-m);
+}

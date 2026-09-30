@@ -1,26 +1,25 @@
-"use client";
-
-import { Column, Row, Heading, Text, Button } from "@once-ui-system/core";
+import { Button, Column, Heading, Row, Tag, Text } from "@once-ui-system/core";
 import Image from "next/image";
+import type { ProjectMetadata } from "@/types/project.types";
 import styles from "./ProjectCard.module.scss";
 
 interface ProjectCardProps {
-  image: string;
-  title: string;
-  description: string;
-  visitUrl: string;
+  project: ProjectMetadata;
+  preload?: boolean;
+  headingLevel?: "h2" | "h3";
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
-  image,
-  title,
-  description,
-  visitUrl,
+  project,
+  preload = false,
+  headingLevel = "h3",
 }) => {
+  const href = project.caseStudy ? `/projects/${project.slug}` : project.externalUrl;
+
   return (
-    <Column 
+    <Column
       className={styles.card}
-      fillWidth 
+      fillWidth
       gap="0"
       radius="m"
       border="neutral-medium"
@@ -29,17 +28,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* Image with 16:9 ratio */}
       <div className={styles.imageWrapper}>
         <Image
-          src={image}
-          alt={title}
+          src={project.image}
+          alt={project.title}
           width={400}
           height={225}
           className={styles.image}
           sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          preload={preload}
         />
       </div>
 
       {/* Content */}
-      <Column 
+      <Column
         paddingX="m"
         paddingY="m"
         gap="m"
@@ -48,24 +48,30 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         horizontal="center"
         align="center"
       >
-        <Heading variant="heading-strong-m" as="h3" align="center">
-          {title}
+        <Heading variant="heading-strong-m" as={headingLevel} align="center">
+          {project.title}
         </Heading>
-        
-        <Text 
-          variant="body-default-s" 
-          onBackground="neutral-weak"
-          align="center"
-        >
-          {description}
+
+        <Text variant="body-default-s" onBackground="neutral-weak" align="center">
+          {project.summary}
         </Text>
+
+        {project.stack.length > 0 && (
+          <Row wrap gap="8" horizontal="center">
+            {project.stack.map((technology) => (
+              <Tag key={`${project.slug}-${technology}`} size="s">
+                {technology}
+              </Tag>
+            ))}
+          </Row>
+        )}
 
         <div style={{ marginTop: "auto" }}>
           <Button
-            href={visitUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            label="Visit Site"
+            href={href}
+            target={project.caseStudy ? undefined : "_blank"}
+            rel={project.caseStudy ? undefined : "noopener noreferrer"}
+            label={project.caseStudy ? "View Project" : "Visit Site"}
             variant="primary"
             size="s"
           />
