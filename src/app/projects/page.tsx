@@ -40,8 +40,13 @@ export default function ProjectsPage() {
       </Heading>
 
       <div className={styles.grid}>
-        {projects.map((project) => (
-          <ProjectCard key={project.metadata.slug} project={project.metadata} />
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={project.metadata.slug}
+            project={project.metadata}
+            preload={index === 0}
+            headingLevel="h2"
+          />
         ))}
       </div>
     </Column>

@@ -5,9 +5,15 @@ import styles from "./ProjectCard.module.scss";
 
 interface ProjectCardProps {
   project: ProjectMetadata;
+  preload?: boolean;
+  headingLevel?: "h2" | "h3";
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  preload = false,
+  headingLevel = "h3",
+}) => {
   const href = project.caseStudy ? `/projects/${project.slug}` : project.externalUrl;
 
   return (
@@ -28,6 +34,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           height={225}
           className={styles.image}
           sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          preload={preload}
         />
       </div>
 
@@ -41,7 +48,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         horizontal="center"
         align="center"
       >
-        <Heading variant="heading-strong-m" as="h3" align="center">
+        <Heading variant="heading-strong-m" as={headingLevel} align="center">
           {project.title}
         </Heading>
 

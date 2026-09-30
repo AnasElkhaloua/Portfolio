@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import {
@@ -6,7 +7,6 @@ import {
   Column,
   Heading,
   Line,
-  Media,
   Meta,
   Row,
   Schema,
@@ -130,7 +130,16 @@ export default async function ProjectPage({ params }: ProjectRouteProps) {
           </Row>
         </Row>
       )}
-      <Media priority aspectRatio="16 / 9" radius="m" alt="" src={heroImage} />
+      <Image
+        className={styles.heroImage}
+        src={heroImage}
+        alt={`${project.metadata.title} project interface`}
+        width={1600}
+        height={900}
+        sizes="(max-width: 768px) calc(100vw - 32px), 960px"
+        preload
+        fetchPriority="high"
+      />
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={project.content} />
       </Column>

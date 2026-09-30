@@ -185,8 +185,12 @@ export default function Home() {
         </Heading>
 
         <div className={styles.projectGrid}>
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.metadata.slug} project={project.metadata} />
+          {featuredProjects.map((project, index) => (
+            <ProjectCard
+              key={project.metadata.slug}
+              project={project.metadata}
+              preload={index === 0}
+            />
           ))}
         </div>
 
