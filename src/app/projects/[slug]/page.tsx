@@ -133,7 +133,7 @@ export default async function ProjectPage({ params }: ProjectRouteProps) {
       <Image
         className={styles.heroImage}
         src={heroImage}
-        alt={`${project.metadata.title} project interface`}
+        alt={project.metadata.imageAlt ?? `${project.metadata.title} project interface`}
         width={1600}
         height={900}
         sizes="(max-width: 768px) calc(100vw - 32px), 960px"

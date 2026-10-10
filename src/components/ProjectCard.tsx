@@ -29,7 +29,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className={styles.imageWrapper}>
         <Image
           src={project.image}
-          alt={project.title}
+          alt={project.imageAlt ?? `${project.title} project preview`}
           width={400}
           height={225}
           className={styles.image}
