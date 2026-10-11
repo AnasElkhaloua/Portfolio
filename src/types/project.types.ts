@@ -12,6 +12,7 @@ type ProjectMetadataBase = {
   slug: string;
   summary: string;
   image: string;
+  imageAlt?: string;
   images: string[];
   stack: string[];
   featured: boolean;
